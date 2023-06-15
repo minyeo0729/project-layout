@@ -24,19 +24,18 @@ ol, ul {list-style: none;}
     flex-wrap: wrap;
     flex-direction: column;
 }
-.body ul li { position: relative; cursor: pointer; padding:10px 0;}
-.body ul li .content {display: grid; grid-template-columns: 10% 15% minmax(150px, 25%) 25% 25%; border-bottom: 1px solid #999; pointer-events: none;  }
+.body ul li { position: relative; cursor: pointer; padding:10px 0; border-bottom: 1px solid #999;}
+.body ul li .content {display: grid; grid-template-columns: 10% 15% minmax(150px, 25%) 25% 25%;  pointer-events: none;  }
 .body ul li .content > div {padding: 10px 0;}
 /* .body ul li div:nth-child(3){display: none;} */
 
 .icon-wrap{display: flex; align-items: center;}
-.icon1{width: 10px; height: 10px; border: 2px solid blue; background: blue; border-radius: 999px;}
-.icon2{width: 10px; height: 10px; border: 2px solid blue; border-radius: 999px;
-    margin-left: -5px;
-}
+.icon-wrap div{width: 20px; height: 20px;}
+.icon1 svg path{fill: #999;}
+.icon2{margin-left: -11px; z-index: -1; }
+.icon2 svg path{fill: white; }
 
 .content-img img {width: 100%; height: auto; display: block; }
-
 .content-img {
     position: absolute; 
     opacity: 0;
