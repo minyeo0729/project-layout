@@ -43,6 +43,7 @@ ol, ul {list-style: none;}
     min-width: 200px;
     top: 60%;
     left: 40%;pointer-events: none;
+    z-index: 1;
 }
 
 @media (max-width: 860px){
