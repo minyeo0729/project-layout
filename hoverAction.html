@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      margin: 0 auto;
+    }
+
+    figure {
+      width: 100%;
+      opacity: 0;
+      position: absolute;
+    }
+
+    li:first-of-type {
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 300px;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <figure class="certificate_thumb">
+        <img class="img" src="miffy-01.png" alt="">
+      </figure>
+    </li>
+    <li>
+      <figure class="certificate_thumb">
+        <img class="img" src="miffy-01.png" alt="">
+      </figure>
+    </li>
+  </ul>
+  <script>
+    function handleMouseMove(e) {
+      const listItem = e.currentTarget;
+      const thumb = listItem.querySelector('.certificate_thumb');
+      const img = listItem.querySelector('.certificate_thumb > img');
+      const center_x = thumb.offsetLeft + thumb.offsetWidth / 2;
+      const center_y = thumb.offsetTop + thumb.offsetHeight / 2;
+      const tween_x = e.clientX - center_x;
+      const tween_y = e.clientY - center_y;
+
+      img.style.left = `${tween_x / 10}px`;
+      img.style.top = `${tween_y / 10}px`;
+    }
+
+    function handleMouseEnter(event) {
+      const listItem = event.currentTarget;
+      const thumb = listItem.querySelector('.certificate_thumb');
+      const img = listItem.querySelector('.certificate_thumb > img');
+
+      if (!thumb) {
+        return;
+      }
+
+      thumb.style.opacity = '1';
+
+      listItem.addEventListener('mousemove', handleMouseMove);
+    }
+
+    function handleMouseLeave(event) {
+      const listItem = event.currentTarget;
+      const thumb = listItem.querySelector('.certificate_thumb');
+
+      if (!thumb) {
+        return;
+      }
+
+      thumb.style.opacity = '0';
+
+      listItem.removeEventListener('mousemove', handleMouseMove);
+    }
+
+    const listItems = document.querySelectorAll('li');
+
+    listItems.forEach((listItem) => {
+      listItem.addEventListener('mouseenter', handleMouseEnter);
+      listItem.addEventListener('mouseleave', handleMouseLeave);
+    });
+  </script>
+
+
+  <script>
+    const cursor = document.querySelector(".cursor");
+    const overlay = document.querySelector(".project-overlay");
+
+    function moveCursor(e) {
+      cursor.style.left = `${e.pageX}px`;
+      cursor.style.top = `${e.pageY}px`;
+    }
+
+    const hoverElements = document.querySelectorAll(".p-1, .p-2, .p-3, .p-4");
+
+    hoverElements.forEach((element) => {
+      const imageUrl = element.dataset.imageUrl;
+
+      element.addEventListener("mouseenter", () => {
+        cursor.style.backgroundImage = `url(${imageUrl})`;
+      });
+    });
+
+    let isCursorVisible = false;
+
+    overlay.addEventListener("mousemove", () => {
+      if (!isCursorVisible) {
+        cursor.style.transition = "scale 0.3s, opacity 0.3s";
+        cursor.style.transform = "scale(1)";
+        cursor.style.opacity = "1";
+        isCursorVisible = true;
+      }
+
+      moveCursor(event);
+    });
+
+    overlay.addEventListener("mouseout", () => {
+      cursor.style.transition = "scale 0.3s, opacity 0.3s";
+      cursor.style.transform = "scale(0.1)";
+      cursor.style.opacity = "0";
+      isCursorVisible = false;
+    });
+  </script>
+</body>
+
+</html>

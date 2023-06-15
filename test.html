@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="body">
+            <ul>
+                <li>
+                    <div class="content">
+                        <div class="icon-wrap">
+                            <div class="icon1"></div>
+                            <div class="icon2"></div>
+                        </div>
+                        <div>date</div>
+                        <div>url</div>
+                        <div>role</div>
+                        <div>date</div>
+                    </div>
+                    <div class="content-img">
+                        <figure class="content-thumb">
+                            <img src="miffy-01.png" alt="">
+                        </figure>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <div class="icon-wrap">
+                            <div class="icon1"></div>
+                            <div class="icon2"></div>
+                        </div>
+                        <div>date</div>
+                        <div>url</div>
+                        <div>role</div>
+                        <div>date</div>
+                    </div>
+                    <div class="content-img">
+                        <div>
+
+                            <img src="miffy-01.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="content">
+                        <div class="icon-wrap">
+                            <div class="icon1"></div>
+                            <div class="icon2"></div>
+                        </div>
+                        <div>date</div>
+                        <div>url</div>
+                        <div>role</div>
+                        <div>date</div>
+                    </div>
+                    <div class="content-img">
+                        <figure class="content-thumb">
+                            <img src="miffy-01.png" alt="">
+                        </figure>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+    
+        const listItems = document.querySelectorAll('li');
+
+listItems.forEach((listItem) => {
+    const thumb = listItem.querySelector('.content-img');
+    listItem.addEventListener('mouseover', handleMouseEnter);
+    listItem.addEventListener('mouseout', handleMouseLeave);
+  });
+  
+        function handleMouseMove(e) {
+            const listItem = e.currentTarget;
+            const thumb = listItem.querySelector('.content-img');
+
+            const center_x = listItem.offsetLeft + (thumb.offsetWidth / 2);
+            const center_y = listItem.offsetTop + (thumb.offsetHeight / 2);
+            const tween_x = e.clientX - center_x;
+            const tween_y = e.clientY - center_y;
+            thumb.style.left = `${tween_x}px`;
+            thumb.style.top = `${tween_y}px`;
+            console.log('move?')
+            console.log(tween_y)
+        }
+
+        function handleMouseLeave(event) {
+            const listItem = event.currentTarget;
+            const thumb = listItem.querySelector('.content-img');
+
+            if (!thumb) {
+                return;
+            }
+
+            thumb.style.opacity = '0';
+            console.log('leave')
+            listItem.removeEventListener('mousemove', handleMouseMove);
+        }
+
+        function handleMouseEnter(event) {
+            const listItem = event.currentTarget;
+            const thumb = listItem.querySelector('.content-img');
+
+            if (!thumb) {
+                return;
+            }
+
+            thumb.style.opacity = '1';
+            console.log('enter')
+            listItem.addEventListener('mousemove', handleMouseMove);
+        }
+
+
+    </script>
+</body>
+
+</html>
