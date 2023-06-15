@@ -43,3 +43,15 @@ function handleMouseEnter(e) {
 
   listItem.addEventListener('mousemove', handleMouseMove);
 }
+
+const stickyElement = document.querySelector('.money');
+
+function updateStickyElementOffset() {
+  const scrollPosition = window.scrollY;
+  const offset = scrollPosition >= 200 ? 20 : 50; // Set your desired dynamic offset here
+
+  stickyElement.style.top = `${offset}px`;
+}
+window.addEventListener('load', updateStickyElementOffset);
+window.addEventListener('scroll', updateStickyElementOffset);
+window.addEventListener('resize', updateStickyElementOffset);

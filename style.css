@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
 }
-body{background: wheat;overflow: hidden;}
+body{background: wheat;overflow-x: hidden;}
 
 ol, ul {list-style: none;}
 
@@ -10,13 +10,14 @@ ol, ul {list-style: none;}
     padding: 100px 0;
     width: 100%;
     height: 100vh;
+    position: relative;
 }
-
+.money{position: sticky;top: 100px;}
 .wrap{
     max-width: 720px;
     margin: 0 auto;
 }
-
+.fake-height{height: 1000px;}
 .header{margin-bottom: 100px;}
 
 .body ul {
